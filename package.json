@@ -1,11 +1,7 @@
 {
-  "name": "Magic-Mirror-Module-Remote-Control",
-  "version": "2.4.0",
-  "description": "This module for the Magic Mirror allows you to shutdown and configure your mirror through a web browser.",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/jopyth/MMM-Remote-Control"
-  },
+  "name": "mmm-remote-control",
+  "version": "3.2.3",
+  "description": "This module for the MagicMirror² allows you to shutdown and configure your mirror through a web browser.",
   "keywords": [
     "magic mirror",
     "smart mirror",
@@ -13,18 +9,44 @@
     "remote control",
     "control"
   ],
-  "author": "Joseph Bethge",
-  "contributors": ["https://github.com/jopyth/MMM-Remote-Control/graphs/contributors"],
-  "license": "MIT",
+  "homepage": "https://github.com/jopyth/MMM-Remote-Control#readme",
   "bugs": {
     "url": "git+https://github.com/jopyth/MMM-Remote-Control/issues"
   },
-  "homepage": "git+https://github.com/jopyth/MMM-Remote-Control#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jopyth/MMM-Remote-Control"
+  },
+  "license": "MIT",
+  "author": "Joseph Bethge",
+  "contributors": [
+    "https://github.com/jopyth/MMM-Remote-Control/graphs/contributors"
+  ],
+  "type": "commonjs",
+  "scripts": {
+    "download_modules": "node ./scripts/download_modules_manually.mjs",
+    "lint": "eslint && prettier . --check",
+    "lint:fix": "eslint --fix && prettier . --write",
+    "postinstall": "cp modules.json.template modules.json",
+    "test": "node --run lint && node --run test:spelling",
+    "test:spelling": "cspell ."
+  },
   "dependencies": {
-    "body-parser": "latest",
-    "lodash": "latest",
-    "node-fetch": "^2.7.0",
-    "simple-git": "latest",
-    "uuid": "^3.3.2"
+    "showdown": "^2.1.0",
+    "simple-git": "^3.28.0",
+    "swagger-ui": "^5.28.0",
+    "uuid": "^11.1.0"
+  },
+  "devDependencies": {
+    "@eslint/css": "^0.11.0",
+    "@eslint/js": "^9.34.0",
+    "@eslint/json": "^0.13.2",
+    "@eslint/markdown": "^7.2.0",
+    "@stylistic/eslint-plugin": "^5.3.1",
+    "cspell": "^9.2.1",
+    "eslint": "^9.34.0",
+    "eslint-plugin-import-x": "^4.16.1",
+    "globals": "^16.3.0",
+    "prettier": "^3.6.2"
   }
 }

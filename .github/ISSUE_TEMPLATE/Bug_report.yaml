@@ -9,8 +9,8 @@ body:
         You should have the steps to being able to reproduce this bug, for us to check if it's truly a bug.
 
         Also, you accept that, if this issue it's invalid in any way, will be discarded without receiving any response about it.
-        If you're not sure if it's a bug, please [ask here](https://github.com/ezeholz/MMM-Remote-Control/discussions).
-        
+        If you're not sure if it's a bug, please [ask here](https://forum.magicmirror.builders/category/29/troubleshooting).
+
         Thanks for taking the time to help Remote Control get better every day!
   - type: input
     attributes:
@@ -25,8 +25,8 @@ body:
       label: NodeJS Version
       description: |
         example:
-        - NodeJS: 14.17.5
-      placeholder: '14.17.5'
+        - NodeJS: 22.0.0
+      placeholder: "22.x.x"
     validations:
       required: true
   - type: input
@@ -34,8 +34,8 @@ body:
       label: MagicMirror² Version
       description: |
         example:
-        - MM: 2.16.0
-      placeholder: '2.16.0'
+        - MM: 2.29.0
+      placeholder: "2.x.x"
     validations:
       required: true
   - type: input
@@ -43,16 +43,16 @@ body:
       label: Remote Control Version
       description: |
         example:
-        - Remote Control: 2.3.6
-      placeholder: '2.3.6'
+        - Remote Control: 3.0.0
+      placeholder: "3.x.x"
     validations:
       required: true
   - type: checkboxes
     attributes:
       label: Did you try using just Remote Control alone with MM?
       options:
-      - label: I have and the error still happening
-        required: true
+        - label: I have and the error still happening
+          required: true
   - type: textarea
     attributes:
       label: Description
@@ -94,7 +94,7 @@ body:
       description: |
         Paste the log you're getting, and possibly the error.
         **Please, make sure that none of your personal information, such as IP or passwords are exposed.**
-      render: shell
+      render: Shell
     validations:
       required: true
   - type: textarea
@@ -107,7 +107,7 @@ body:
         - IPs from MM instance, or the ones that are whitelisted. Please, replace them with *** so we're totally sure that you have set them.
         - API keys, Tokens from different modules, URL to private calendars.
         - Directions or Personal data.
-      render: javascript
+      render: JavaScript
     validations:
       required: true
   - type: textarea

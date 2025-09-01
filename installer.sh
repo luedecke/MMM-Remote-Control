@@ -38,7 +38,7 @@ MODULE_NAME=MMM-Remote-Control
 FORK=Jopyth
 
 # check if we are correct by searching for https://github.com/MagicMirrorOrg/MagicMirror in package.json
-TEST_STRING="\"url\": \"git+https://github.com/MagicMirrorOrg/MagicMirror.git\""
+TEST_STRING="\"url\": \"https://github.com/MagicMirrorOrg/MagicMirror\""
 if grep -sq "$TEST_STRING" "$MM_HOME/package.json"; then
     # we found it
     echo -n ""
@@ -70,11 +70,11 @@ if [ -d "$MM_HOME/modules/$MODULE_NAME" ] ; then
     echo ""
     if [ "$BRANCH" == "master" ]; then
         if check_yes "Do you want to switch to the develop branch?"; then
-            git checkout develop
+            git switch develop
         fi
     else
         if check_yes "Do you want to switch to the master branch?"; then
-            git checkout master
+            git switch master
         fi
     fi
     echo ""
@@ -89,7 +89,7 @@ if [ -d "$MM_HOME/modules/$MODULE_NAME" ] ; then
         echo ""
         echo "Checking for new dependencies to install..."
         echo ""
-        npm install
+        npm ci --omit=dev
         if [ $? -ne 0 ]; then
             echo "Failed to install new dependencies."
             exit 1;
@@ -131,7 +131,7 @@ else
             echo ""
             echo "Installing dependencies..."
             echo ""
-            npm install
+            npm ci --omit=dev
             if [ $? -ne 0 ]; then
                 echo "Failed to install dependencies."
                 exit 1;
@@ -146,7 +146,7 @@ fi
 
 # Get an UUID to use as an API key
 NODE_BIN=$(which node)
-APIKEY=$($NODE_BIN -e 'console.log(require("uuid/v4")().replace(/-/g, ""));');
+APIKEY=$($NODE_BIN -e 'console.log(require("uuid").v4().replace(/-/g, ""));');
 
 echo ""
 if check_no "Do you want to view instructions on how to configure the module?"; then
@@ -196,7 +196,7 @@ fi
 echo "Have fun with the module, if you have any problems, please search for help on github or in the forum:"
 echo ""
 echo "   Github : https://github.com/$FORK/$MODULE_NAME"
-echo "   Forum  : http://forum.magicmirror.builders"
+echo "   Forum  : https://forum.magicmirror.builders"
 echo ""
 echo "Do not forget to restart your MagicMirror² to activate the module! Installation finished."
 echo ""
